@@ -447,19 +447,7 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  let res = [];
-  for (let i = 0; i < n; i++) {
-    let row = [];
-    for (let j = 0; j < n; j++) {
-      if(i != j){
-        row.push(0);
-      }else{
-        row.push(1);
-      }
-    }
-    res.push(row);
-  }
-  return res;
+  throw new Error('Not implemented')
 }
 
 /**
@@ -476,11 +464,8 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   let res = [];
-   for(let i = start; i <= end; i++){
-     res.push(i);
-   }
-   return res;
+   let res = new Array(end - start + 1).fill(start);
+   return res.map((val, idx) => val += idx);
 }
 
 /**
