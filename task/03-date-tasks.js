@@ -22,7 +22,7 @@
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
 function parseDataFromRfc2822(value) {
-   throw new Error('Not implemented');
+   return new Date(value);
 }
 
 /**
@@ -37,7 +37,7 @@ function parseDataFromRfc2822(value) {
  *    '2016-01-19T08:07:37Z' => Date()
  */
 function parseDataFromIso8601(value) {
-   throw new Error('Not implemented');
+   return new Date(value);
 }
 
 
@@ -56,7 +56,17 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-   throw new Error('Not implemented');
+   let year = date.getFullYear();
+   if( (year % 4) != 0 ){
+     return false;
+   }
+   if( (year % 100) != 0 ){
+     return true;
+   }
+   if( (year % 400) != 0 ){
+     return false;
+   }
+   return true;
 }
 
 
@@ -76,14 +86,23 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-   throw new Error('Not implemented');
+  let date = endDate - startDate
+  let mSec = date % 1000;
+  date /= 1000;
+  let sec = date % 60;
+  date /= 60;
+  let min = date % 60;
+  date /= 60;
+  let hour = date % 24
+  date = new Date(2018, 1, 1, hour ,min ,sec ,mSec).toTimeString()
+  return date.substring(0, 8) + '.' + (mSec < 10 ? '00' + mSec : mSec < 100 ? '0' + mSec : mSec)
 }
 
 
 /**
  * Returns the angle (in radians) between the hands of an analog clock for the specified Greenwich time.
  * If you have problem with solution please read: https://en.wikipedia.org/wiki/Clock_angle_problem
- * 
+ *
  * @param {date} date
  * @return {number}
  *
@@ -94,7 +113,13 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+  let min = date.getMinutes();
+  let hour = date.getUTCHours();
+  if(hour > 12){
+    hour -= 12;
+  }
+  let val = Math.abs(60 * hour - 11 * min) / 2;
+  return Math.min(val,360 - val) * Math.PI / 180;
 }
 
 
