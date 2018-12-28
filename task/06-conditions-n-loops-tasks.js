@@ -216,14 +216,14 @@ function isInsideCircle(circle, point) {
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     let str = ''
-    str += isStartIncluded? '[' : '(');
+    str += isStartIncluded? '[' : '(';
     if( b > a ){
       let temp = a;
       a = b;
       b = temp;
     }
     str += a + ', ' + b;
-    str += isEndIncluded? ']' : ')');
+    str += isEndIncluded? ']' : ')';
     return str;
 }
 
