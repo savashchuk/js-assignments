@@ -47,7 +47,7 @@ function getComposition(f,g) {
  *
  */
 function getPowerFunction(exponent) {
-    throw new Error('Not implemented');
+    return (val) => Math.pow(val, exponent);
 }
 
 
@@ -64,9 +64,18 @@ function getPowerFunction(exponent) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-    throw new Error('Not implemented');
-}
+ function getPolynom() {
+     if (arguments.length === 3){
+         return (x) => arguments[0] * x * x + arguments[1] * x + arguments[2];
+     }
+     if (arguments.length === 2){
+         return (x) => arguments[0] * x + arguments[1];
+     }
+     if (arguments.length === 1){
+         return (x) => arguments[0];
+     }
+     return (x) => null;
+ }
 
 
 /**
@@ -84,7 +93,8 @@ function getPolynom() {
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
 function memoize(func) {
-    throw new Error('Not implemented');
+  let temp = func();
+  return () => temp;
 }
 
 
@@ -103,9 +113,18 @@ function memoize(func) {
  * }, 2);
  * retryer() => 2
  */
-function retry(func, attempts) {
-    throw new Error('Not implemented');
-}
+ function retry(func, attempts) {
+   return () => {
+     while(true){
+       try{
+         return func();
+       }
+       catch(ex){
+         continue;
+       }
+     }
+   }
+ }
 
 
 /**
@@ -149,9 +168,14 @@ function logger(func, logFunc) {
  *   partialUsingArguments(fn, 'a','b','c')('d') => 'abcd'
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
-function partialUsingArguments(fn) {
-    throw new Error('Not implemented');
-}
+ function partialUsingArguments(fn) {
+     let arg = [...arguments];
+     arg.splice(0, 1);
+     return function() {
+         arg = [...arg, ...arguments];
+         return fn.apply(null, arg);
+     }
+ }
 
 
 /**
@@ -171,7 +195,7 @@ function partialUsingArguments(fn) {
  *   getId10() => 11
  */
 function getIdGeneratorFunction(startFrom) {
-    throw new Error('Not implemented');
+    return() => startFrom++;
 }
 
 
