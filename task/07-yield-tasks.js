@@ -32,9 +32,18 @@
  * @return {Iterable.<string>}
  *
  */
-function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
-}
+ function* get99BottlesOfBeer() {
+   yield '99 bottles of beer on the wall, 99 bottles of beer.';
+   for(let i = 98; i >= 2; i--){
+     yield `Take one down and pass it around, ${i} bottles of beer on the wall.`;
+     yield `${i} bottles of beer on the wall, ${i} bottles of beer.`;
+   }
+   yield 'Take one down and pass it around, 1 bottle of beer on the wall.';
+   yield '1 bottle of beer on the wall, 1 bottle of beer.';
+   yield 'Take one down and pass it around, no more bottles of beer on the wall.';
+   yield 'No more bottles of beer on the wall, no more bottles of beer.';
+   yield 'Go to the store and buy some more, 99 bottles of beer on the wall.';
+ }
 
 
 /**
@@ -46,9 +55,13 @@ function* get99BottlesOfBeer() {
  * @return {Iterable.<number>}
  *
  */
-function* getFibonacciSequence() {
-    throw new Error('Not implemented');
-}
+ function* getFibonacciSequence() {
+   let arr = [0, 1];
+   for(let i = 2; true; i++){
+     f.push(arr[i - 1] + arr[i - 2]);
+     yield arr[i - 2];
+   }
+ }
 
 
 /**
@@ -81,9 +94,18 @@ function* getFibonacciSequence() {
  *  depthTraversalTree(node1) => node1, node2, node3, node4, node5, node6, node7, node8
  *
  */
-function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
-}
+ function* depthTraversalTree(root) {
+   let res = [root];
+   let length = 0;
+   let node;
+   while(res.length !== length){
+     node = res[length++];
+     if(node.hasOwnProperty('children')){
+       res.splice(length, 0, ...node.children);
+     }
+     yield node;
+   }
+ }
 
 
 /**
@@ -107,9 +129,20 @@ function* depthTraversalTree(root) {
  *           8
  *
  */
-function* breadthTraversalTree(root) {
-    throw new Error('Not implemented');
-}
+ function* breadthTraversalTree(root) {
+   let res = [root];
+   let length = 0;
+   let node;
+   while(res.length !== length){
+     node = res[length++];
+     if(node.hasOwnProperty('children')){
+       for(let el of node.children){
+           res.push(el);
+       }
+     }
+     yield node;
+   }
+ }
 
 
 /**
