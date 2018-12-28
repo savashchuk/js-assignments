@@ -55,7 +55,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-    return 'Hello, ' + firstName + ' ' + lastname + '!';
+    return 'Hello, ' + firstName + ' ' + lastName + '!';
 }
 
 /**
@@ -201,33 +201,26 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    let str = '';
-    for(let i = 0; i < width; i++){
-      for(let j = 0; j < height; j++){
-        if( (i == 0) && (j == 0) ){
-          str += '┌';
-        }else
-        if( (i == 0) && (j == height - 1) ){
-          str += '└';
-        }else
-        if( (i == width - 1) && (j == 0) ){
-          str += '┐';
-        }else
-        if( (i == width - 1) && (j == height - 1) ){
-          str += '┘';
-        }else
-        if( (i == 0) || (i == width - 1) ){
-          str += '─';
-        }else
-        if( (j == 0) || (j == height - 1) ){
-          str += '│';
-        }else
-        str += ' ';
-
-      }
-      str += '\n';
-    }
-    return str;
+  let s = ''
+for (let i = 0; i < height; i++) {
+  for (let j = 0; j < width; j++)
+    if( i == 0 && j == 0)
+      s += '┌';
+    else if( i == 0 && j ==  width -1)
+      s += '┐';
+      else if( i == height -1 && j == 0)
+        s += '└';
+        else if( i ==  height -1 && j == width -1)
+          s += '┘';
+          else if(j == 0 || j == width -1)
+            s+= '│';
+            else if(i == 0 || i == height -1)
+              s+= '─';
+            else
+              s+= ' ';
+  s += '\n';
+}
+return s;
 }
 
 
