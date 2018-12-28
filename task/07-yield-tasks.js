@@ -56,10 +56,15 @@
  *
  */
  function* getFibonacciSequence() {
-   let arr = [0, 1];
+   yield 0;
+   yield 1;
+   let f = 0;
+   let s = 1;
    for(let i = 2; true; i++){
-     f.push(arr[i - 1] + arr[i - 2]);
-     yield arr[i - 2];
+     let t = f + s;
+     yield t;
+     f = s;
+     s = t;
    }
  }
 

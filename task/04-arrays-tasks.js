@@ -251,7 +251,7 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   return arr.filter((val, idx) => ( (index % 2) == 1 ));
+   return arr.filter((val, idx) => ( (idx % 2) == 1 ));
 }
 
 
@@ -457,7 +457,7 @@ function getIdentityMatrix(n) {
         row.push(1);
       }
     }
-    res.push(temp);
+    res.push(row);
   }
   return res;
 }
@@ -477,7 +477,7 @@ function getIdentityMatrix(n) {
  */
 function getIntervalArray(start, end) {
    let res = [];
-   for(let i = strat; i <= end; i++){
+   for(let i = start; i <= end; i++){
      res.push(i);
    }
    return res;
@@ -495,7 +495,7 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   return Array.from(new Set(A));
+   return Array.from(new Set(arr));
 }
 
 /**

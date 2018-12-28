@@ -58,7 +58,7 @@ function getFactorial(n) {
     if (n === 0){
       return 1;
     }
-    return n*getFactorial(n - 1);
+    return n * getFactorial(n - 1);
 }
 
 
@@ -191,7 +191,7 @@ function isInsideCircle(circle, point) {
          if(str.lastIndexOf(str.charAt(i)) === str.indexOf(str.charAt(i)))
              return str.charAt(i);
    return null;
-
+}
 
 /**
  * Returns the string representation of math interval, specified by two points and include / exclude flags.
@@ -217,7 +217,7 @@ function isInsideCircle(circle, point) {
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     let str = ''
     str += isStartIncluded? '[' : '(';
-    if( b > a ){
+    if( b < a ){
       let temp = a;
       a = b;
       b = temp;
@@ -317,10 +317,10 @@ function reverseInteger(num) {
  function getDigitalRoot(num) {
    let res = 0;
    num.toString().split('').map(val => (res += +val))
-   if(result > 9){
-     return getDigitalRoot(result);
+   if(res > 9){
+     return getDigitalRoot(res);
    }
-   return result;
+   return res;
  }
 
 

@@ -54,7 +54,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-    return (value1 + value2) / 2.0;
+    return (value1 / 2 + value2 / 2) ;
 }
 
 /**
@@ -73,7 +73,7 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-    return Math.sqrt( (x1 - x2) * (x1 - x2) + (y1 - y1) * (y1 - y1));
+    return Math.sqrt( (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
 
 /**
@@ -234,7 +234,7 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
     if ( isNaN(0 - - value) ){
-      return 0;
+      return def;
     }
     return 0 - - value;
 }
